@@ -1,0 +1,36 @@
+/* VARIABLES */
+$sizes : ( "1": 2em, "2": 1.75em, "3": 1.5em, "4": 1.25em, "5": 1em, "6" : .75em);
+
+@each $key, $value in $sizes {
+  .p-#{$key} { padding: $value; }
+  .px-#{$key} {
+    padding-left:  $value;
+    padding-right: $value;
+  }
+  .py-#{$key} {
+    padding-top: $value;
+    padding-bottom: $value;
+  }
+  .m-#{$key} { margin: $value; }
+  .mx-#{$key} {
+    margin-left: $value;
+    margin-right: $value;
+  }
+  .my-#{$key} {
+    margin-top: $value;
+    margin-bottom: $value;
+  }
+}
+
+.rounded {
+  border-radius: 50%;
+}
+
+.bordered {
+  border: 1px solid;
+}
+
+.has-shadow {
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, .2);
+}
+

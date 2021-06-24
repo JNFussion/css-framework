@@ -1,0 +1,59 @@
+@use "sass:map";
+
+/* VARIABLES */
+$default-general-purpose-font: Arial, Helvetica, sans-serif;
+$default-text-content-font: Georgia, 'Times New Roman', Times, serif;
+$base-font-size : 14px;
+$font-size-array: ("1" : 2.5em, "2" : 28px, "3" : 26px, "4" : 24px, "5" : 22px, "6" : 20px);
+
+/* 28 26 24 22 20 */
+
+/* TEXT RELETED */
+
+body { font-family: $default-general-purpose-font; }
+
+.content-container {
+  margin: 1em .75em;
+  padding: 1em;
+  font-family: $default-text-content-font;
+  font-size: $base-font-size;
+  line-height: 1.5;
+}
+
+.content-container .title {
+  font-size: map.get($font-size-array, "2");
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+@each $key, $value in $font-size-array {
+  .title.size-#{$key} { font-size: $value; }
+}
+
+.bold,
+strong {
+  font-weight: bold;
+}
+
+.italic,
+em {
+  font-style: italic;
+}
+
+.content-container ul {
+  list-style: circle inside;
+}
+
+.content-container ol { list-style: decimal inside; }
+.text-centered { text-align: center; }
+.text-upper { text-transform: uppercase; }
+
+a {
+  text-decoration: none;
+  color: hsl(0, 0%, 25%);
+  transition: all .2s;
+}
+
+a:hover {
+  color: black;
+}

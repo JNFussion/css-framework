@@ -1,0 +1,71 @@
+/* VARIABLES */
+
+$gap-sizes: ("1" : .5em, "2" : .75em, "3" : 1em, "4": 1.5em);
+$alignment-justification-positions: (start, end, center);
+
+/* LAYOUT */
+
+
+.grid {
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  padding: 1em;
+  margin: 1em;
+}
+
+/* Base class for sizing and positioning the child elements.
+  First number is for the position and second number for how many columns take up */
+
+@mixin column-position($position) {
+    .column-#{$position} { grid-column: $position; }
+}
+
+@mixin span($span) {
+  .span-#{$span}{
+    grid-column: span $span;
+  }
+}
+
+@mixin column-position-span($position, $span) {
+  .column-#{$position}-#{$span}{
+    grid-column: $position / span $span;
+  }
+}
+
+@for $i from 1 through 12 {
+  @include column-position($i);
+  @include span($i);
+
+  @for $j from 1 through 12 {
+    @include column-position-span($i, $j)
+  }
+}
+
+/* SIZING GAP */
+
+@mixin gap($number, $gap-size) {
+  .grid.gap-#{$number} { gap: $gap-size; }
+}
+
+@each $key, $value in  $gap-sizes{
+  @include gap($key, $value);
+}
+
+/* ALIGNING AND JUSTIFYING */
+
+
+@mixin alignment-justification($pos) {
+
+  .grid.a-#{$pos} { align-items: $pos; }
+  .grid.j-#{$pos} { justify-items: $pos; }
+}
+
+.grid.centered {
+  justify-content: center;
+  align-content: center;
+}
+
+@each $value in  $alignment-justification-positions {
+  @include alignment-justification($value);
+}
