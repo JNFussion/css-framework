@@ -1,12 +1,9 @@
 @use "sass:map";
 
-/* VARIABLES */
 $default-general-purpose-font: Arial, Helvetica, sans-serif;
 $default-text-content-font: Georgia, 'Times New Roman', Times, serif;
 $base-font-size : 14px;
-$font-size-array: ("1" : 2.5em, "2" : 28px, "3" : 26px, "4" : 24px, "5" : 22px, "6" : 20px);
-
-/* 28 26 24 22 20 */
+$font-size-array: ("1": 20px, "2": 22px, "3": 24px, "4": 26px, "5": 2em, "6": 2.5em);
 
 /* TEXT RELETED */
 
@@ -20,14 +17,14 @@ body { font-family: $default-general-purpose-font; }
   line-height: 1.5;
 }
 
-.content-container .title {
+.title {
   font-size: map.get($font-size-array, "2");
   font-weight: bold;
   line-height: 1.2;
 }
 
 @each $key, $value in $font-size-array {
-  .title.size-#{$key} { font-size: $value; }
+  .size-#{$key} { font-size: $value; }
 }
 
 .bold,
@@ -52,6 +49,7 @@ a {
   text-decoration: none;
   color: hsl(0, 0%, 25%);
   transition: all .2s;
+  cursor: pointer;
 }
 
 a:hover {
